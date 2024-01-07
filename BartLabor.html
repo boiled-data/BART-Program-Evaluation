@@ -11,7 +11,7 @@
 
 
 
-<title>Linear regression and BART: Program Evaluation in the labor market</title>
+<title>Linear Regression and BART: Program Evaluation in the Labor Market</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -240,7 +240,7 @@ window.initializeCodeFolding = function(show) {
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Show') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm code-folding-btn pull-right float-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
@@ -266,7 +266,7 @@ window.initializeCodeFolding = function(show) {
     //   * Change text
     //   * add a class for intermediate states styling
     div.on('hide.bs.collapse', function () {
-      showCodeText.text('Code');
+      showCodeText.text('Show');
       showCodeButton.addClass('btn-collapsing');
     });
     div.on('hidden.bs.collapse', function () {
@@ -458,15 +458,15 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Linear regression and BART: Program
-Evaluation in the labor market</h1>
+<h1 class="title toc-ignore">Linear Regression and BART: Program
+Evaluation in the Labor Market</h1>
 <h4 class="date">1 Oct 2022</h4>
 
 </div>
 
 
 <pre class="r"><code>#Preliminaries:
-knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval = TRUE) #set eval = TRUE when run first
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, eval = FALSE) #set eval = TRUE when run first
 
 rm(list=ls())
 
@@ -483,11 +483,11 @@ theme_set(theme_light())
 dir.create(&quot;BartLabor&quot;, showWarnings = FALSE)</code></pre>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Evaluation of the effectiveness of labor market programs is of great
-importance in order to learn how to design good programs and provide
-support efficiently. Consequently, there is a huge literature on the
-evaluation of labor market trainings and we add to this by allowing for
-heterogeneous treatment effects. We will evaluate the effectiveness of a
+<p>Evaluation of labor market programs is of great importance in order
+to learn how to better design programs and provide support effectively.
+Consequently, there is a huge literature on the evaluation of labor
+market trainings and we add to this by allowing for heterogeneous
+treatment effects. We will evaluate the effectiveness of a
 federally-funded labor treatment program <span class="citation">(LaLonde
 1986)</span> which was implemented in the mid-1970s (US) with the
 objective of providing work experience. The male subsample we use
@@ -549,10 +549,10 @@ and risk adjustment <span class="citation">(eg. Angrist and Pischke
 2009; Pearl 2013)</span>. Secondly, we consider Bayesian Additive
 Regression Trees <span class="citation">(Chipman, George, and McCulloch
 2010; J. L. Hill 2011)</span>, a machine learning model recently
-becoming popular as it allows to detect relevant interactions in the
-data generating process and can be used to estimate heterogeneous
-treatment effects as well <span class="citation">(Carnegie, Dorie, and
-Hill 2019; J. Hill, Linero, and Murray 2020)</span>.</p>
+becoming popular that allows to detect relevant interactions in the data
+generating process and can be used to estimate heterogeneous treatment
+effects as well <span class="citation">(Carnegie, Dorie, and Hill 2019;
+J. Hill, Linero, and Murray 2020)</span>.</p>
 <pre class="r"><code>#Linear regression
 
 lm &lt;- lm(re78 ~ treat + re75 + age + education + race + married + nodegree, data=lalonde)
